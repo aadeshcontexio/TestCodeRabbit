@@ -1,0 +1,54 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.3'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'contexio'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.imgscalr:imgscalr-lib:4.2'
+	implementation 'mysql:mysql-connector-java:8.0.33'  // Add this line
+    implementation group: 'com.jolbox', name: 'bonecp', version: '0.8.0.RELEASE'
+   implementation 'org.javatuples:javatuples:1.2'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+ 
+    // AWS SDK
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.1000')
+    implementation 'com.amazonaws:aws-java-sdk-s3'
+ 
+    // PDF manipulation libraries
+    implementation 'org.apache.pdfbox:pdfbox-tools:2.0.22'
+    implementation 'org.apache.pdfbox:fontbox:2.0.22'
+    implementation 'org.apache.pdfbox:jempbox:1.8.16'
+    implementation 'org.apache.pdfbox:xmpbox:2.0.22'
+    implementation 'org.apache.pdfbox:preflight:2.0.22'
+    implementation 'net.sf.cssbox:pdf2dom:1.9'
+ 
+    // JSON processing
+    implementation 'org.json:json:20190722'
+ 
+    // Database connectivity
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

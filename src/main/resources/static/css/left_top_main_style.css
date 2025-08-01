@@ -1,0 +1,695 @@
+/* <!-- ***  UI/CSS Author Neville Doke  *** --> */
+/* ===== Don't change this css unless necessary Start ===== */
+/* Google Font Import - Poppins */
+@import url("https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700&display=swap");
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    /* ===== Colors ===== */
+    --body-color: #e4e9f7;
+    --side_nav-color: #f6f6f6;
+    --primary-color: #695cfe;
+    --primary-color-light: #f6f5ff;
+    --toggle-color: #ddd;
+    --text-color: #707070;
+	/* ====== Padding ====== */
+	--padding-04: 4px;
+	/* ====== Padding ====== */
+	--font-size-12: 12px;
+	--font-size-16: 16px;
+	--font-size-20: 20px;
+	--font-size-24: 24px;
+	--font-size-28: 28px;
+    /* ====== Transition ====== */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.4s ease;
+	
+}
+body {
+    height: 100vh;
+    background: var(-- body-color);
+    transition: var(-- tran-05);
+}
+body.dark {
+    --body-color: #18191a;
+    --side_nav-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-light: #3a3b3c;
+    --toggle-color: #fff;
+    --text-color: #ccc;
+}
+/* ===== Side Bar Start ===== */
+.side_nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--side_nav-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+.side_nav.close {
+    width: 88px;
+}
+/* ===== Reusable CSS ===== */
+.side_nav .text {
+    font-size: var(--font-size-16);
+    font-weight: 500;
+    color: var(--text-color);
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 1;
+}
+.side_nav.close .text {
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--tran-03)
+}
+.side_nav .image {
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.side_nav li {
+    position: relative; /* added by kundan */
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+.side_nav li .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    font-size: var(--font-size-20);
+}
+/* .side_nav li .icon,
+.side_nav li .text {
+    color: var(--text-color);
+    transition: var(--tran-02);
+} */
+.side_nav header {
+    position: relative;
+}
+.side_nav .image-text img {
+    width: 40px;
+    border-radius: 6px;
+}
+.side_nav header .image-text {
+    display: flex;
+    align-items: center;
+}
+header .image-text .header-text {
+    display: flex;
+    flex-direction: column;
+}
+.header-text .name {
+    font-weight: 600;
+}
+.header-text .profession {
+    margin-top: -2px;
+}
+.side_nav header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%) rotate(180deg);
+    height: 25px;
+    width: 25px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--side_nav-color);
+    font-size: var(--font-size-24);
+    transition: var(--tran-03);
+}
+
+.side_nav.close header .toggle {
+    transform: translateY(-50%);
+}
+body.dark .side_nav header .toggle {
+    color: var(--text-color);
+}
+.side_nav .menu {
+    margin-top: 35px;
+}
+.side_nav .search-box {
+    background: var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+    font-size: var(--font-size-16);
+    font-weight: 500;
+}
+.side_nav li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+    color: var(--text-color); /* Default text color */
+}
+/* .side_nav li a:hover { */
+.side_nav.close li a:hover {
+	background: var(--primary-color);
+	color: var(--side_nav-color);
+    /* //background: #333; /* Added by kundan */
+    /* color: #fff; /* Added by kundan */
+}
+.side_nav li a:hover .icon{
+    visibility: visible; /* Added by kundan*/
+    opacity: 1; /* Added by kundan*/
+}
+.side_nav li a:hover .text {
+    visibility: hidden; /* Added by kundan*/
+    opacity: 1; /* Added by kundan*/
+}
+.side_nav li a:hover .tooltip {
+    visibility: visible; /* Added by kundan*/
+}
+.side_nav:not(.close) .tooltip {
+    display: none;
+}
+.side_nav.close .tooltip {
+    display: block;
+}
+.side_nav.close li:hover .tooltip {
+    opacity: 1;
+    visibility: visible; /* Added by kundan*/
+    color: var(--side_nav-color);
+}
+body.dark .side_nav li a:hover .icon,
+body.dark .side_nav li a:hover .text {
+    color: var(--fff);
+}
+body.dark .side_nav.close .tooltip {
+    color: #af2121; /* Added by kundan*/
+}
+.side_nav li .tooltip {
+	position: absolute;
+	left: 70px;
+	top: 50%;
+    transform: translateY(-50%);
+    /* box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2); */
+    border-radius: 0.6rem;
+    padding: 0.4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    opacity: 0;
+    background: var(--primary-color);
+    transition: var(--tran-04);
+    white-space: nowrap;
+    
+    /* Smooth left curve */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    pointer-events: none;
+    visibility: hidden; 
+}
+/* Tooltip arrow effect */
+/* .side_nav li .tooltip::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -7px;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background: var(--primary-color);
+        border-radius: 50%;
+} */
+
+.side_nav li:hover .tooltip {
+	opacity: 1;
+	color: var(--side_nav-color);
+    pointer-events: auto;
+}
+
+.side_nav .menu-bar {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.menu-bar .mode {
+    position: relative;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+}
+.menu-bar .mode .moon-sun {
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+}
+.menu-bar .mode i {
+    position: absolute;
+    transition: var(--tran-03);
+}
+.menu-bar .mode i.sun {
+    opacity: 0;
+}
+body.dark .menu-bar .mode i.sun {
+    opacity: 1;
+}
+body.dark .menu-bar .mode i.moon {
+    opacity: 0;
+}
+.menu-bar .mode .toggle-switch {
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 60px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+}
+.toggle-switch .switch {
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+    transition: var(--tran-05);
+}
+.switch::before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    background: var(--side_nav-color);
+    transition: var(--tran-03);
+}
+body.dark .switch::before {
+    left: 25px;
+}
+/* ===== Side Bar End ===== */
+/* ===== Top Nav Start===== */
+.top_nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: var(--padding-04);
+    background: var(--side_nav-color);
+}
+
+.top_nav .notification .icon,
+.top_nav .profile .icon,
+.top_nav .profile .profile-menu {
+    color: var(--text-color);
+    transition: var(--tran-02);
+}
+
+.notification {
+    margin-right: 15px;
+    cursor: pointer;
+	font-size: var(--font-size-28);
+}
+
+.profile-info {
+    position: relative;
+    cursor: pointer;
+	font-size: var(--font-size-28);
+}
+.profile-info a {
+	font-size: var(--font-size-16);
+}
+
+.profile-menus {
+    display: none;
+    position: absolute;
+    /* top: 100%; */
+    right: 0; /* Align to the right */
+    background: var(--side_nav-color);
+    list-style: none;
+    padding: 10px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    border-radius: 5px;
+    min-width: 150px;
+	transition: var(--tran-05);
+}
+
+.profile-menus li a {
+    text-decoration: none;
+    display: block;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.top_nav .profile-menus li a:hover {
+    background: var(--primary-color);
+}
+
+.top_nav .profile-menus li a:hover .icon,
+.top_nav .profile-menus li a:hover .text {
+    color: var(--side_nav-color);
+}
+body.dark .top_nav .profile-menus li a:hover .icon,
+body.dark .top_nav .profile-menus li a:hover .text {
+    color: var(--text-color);
+}
+
+.profile-menu-divider {
+    margin: 5px 0;
+    border: 0;
+    height: 1px;
+    background: #ccc;
+}
+
+/* ===== Top Nav End===== */
+/* ===== Main Content Start===== */
+.main_content {
+position: relative;
+/* height: 100vh; */
+left: 250px;
+top: 50px;
+padding: 10px;
+width: calc(100% - 250px);
+background: var( --body-color);
+transition: var( --tran-05);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.main_content .text {
+font-size: var(--font-size-28);
+font-weight: 500;
+color: var( --text-color);
+}
+.side_nav.close ~ .main_content{
+left: 88px;
+top: 50px;
+width: calc(100% - 88px);
+}
+
+/* Row Styling */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Column Styling */
+.col {
+    flex: 1;
+    min-width: 200px;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Nested Row And Column Inside a Column */
+.nested-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.nested-col {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    background: #bbb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .col, .nested-col {
+        flex-basis: 100%; 
+    }
+}
+/* Set column widths */
+.col-2 {
+    flex: 0 0 20%;  /* 20% of the row */
+}
+.col-3 {
+    flex: 0 0 30%;  /* 20% of the row */
+}
+.col-4 {
+    flex: 0 0 40%;
+}
+.col-5 {
+    flex: 0 0 50%;
+}
+.col-6 {
+    flex: 0 0 60%;
+}
+.col-7 {
+    flex: 0 0 70%;
+}
+.col-8 {
+    flex: 0 0 80%;  /* 80% of the row */
+}
+.col-9 {
+    flex: 0 0 90%;
+}
+.col-10 {
+    flex: 0 0 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10 {
+        flex: 0 0 100%; /* Stack columns on smaller screens */
+    }
+}
+/* Search and Filter Container Styling */
+.search-filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-radius: 12px;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    flex-grow: 1;
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.15);
+    position: relative; /* For positioning the background image */
+    overflow: hidden;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 10px 10px 40px; /* Add left padding for the image */
+    color: #333;
+    background: transparent;
+    z-index: 2;
+}
+
+.search-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    transform: translateY(-50%);
+    width: 25%;
+    height: 46px;
+    background: url('../images/search_bar_mountains.png') no-repeat center center;
+    background-size: cover;
+    z-index: 2;
+	border-radius: 8px;
+}
+
+.search-btn {
+    background: linear-gradient(180deg, #1CD8D2 0%, #93EDC7 100%);
+    border: none;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 15px 20px;
+    font-size: 18px;
+    z-index: 1;
+}
+
+
+.search-btn:hover {
+    /* background: #0056b3; */
+}
+
+.filter-btn {
+    background: linear-gradient(180deg, #1CD8D2 0%, #93EDC7 100%);
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+	color: white;
+	box-shadow: 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.filter-btn i {
+    font-size: 18px;
+}
+
+.filter-btn:hover {
+    /* background: #e0e0e0; */
+}
+
+/* Advanced Filter Panel */
+.filter-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    display: none; /* Hidden by default */
+    z-index: 1000;
+	transition: var(--tran-05);
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.filter-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.close-filter-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+}
+
+.filter-content label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.filter-content span {
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.apply-filters-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+}
+
+.apply-filters-btn:hover {
+    background: #0056b3;
+}
+/* ===== Don't change this css unless necessary End ===== */
+/* ===== Main Content End===== */
+/* ===== Footer Start ===== */
+.footer_info {
+	background-color: var(--side_nav-color);
+	bottom: 0;
+    position: fixed;
+    right: 0;
+    padding: 10px;
+    border-radius: 8px;
+}
+/* ===== Footer End ===== */
+/* Kundan CSS Start */
+.side_nav.close li a {
+    color: var(--text-color); /* This should be a dark color */
+    background: transparent; /* Ensure background is transparent or dark */
+}
+
+body.dark .side_nav.close .tooltip {
+    color: #fff; /* Light color for tooltip text */
+}
+body.dark .side_nav.close li a {
+    color: #ccc; /* Light gray for better visibility against dark background */
+    background: transparent; /* Keep background transparent or dark */
+}
+body.dark .side_nav li a:hover {
+    background: #444; /* Darker background on hover in dark mode */
+    color: #fff; /* Light text color on hover in dark mode */
+}
+.side_nav:not(.close) li a:hover .text {
+    visibility: visible; /* Keep the text visible */
+    opacity: 1; /* Ensure the text is fully visible */
+    color: #fff;
+}
+.side_nav.close li a:hover .text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.side_nav:not(.close) li a:hover {
+    background: var(--primary-color); /* Highlight with primary color */
+    color: #fff; /* Change text color to white */
+}
+.side_nav:not(.close) li a:hover .icon {
+    color: #fff; /* Change icon color to white */
+}
+
+/* Kundan CSS End */
