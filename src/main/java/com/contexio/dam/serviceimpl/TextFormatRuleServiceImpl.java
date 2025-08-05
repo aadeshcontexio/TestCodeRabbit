@@ -103,19 +103,10 @@ public class TextFormatRuleServiceImpl implements TextFormatRuleService {
 
 	@Override
 	public Result isAlphaNumeric(String data) {
-		try {
-			String num = data;
-			result = true;
-		} catch (Exception e) {
-			result = false;
-		}
 		Result resultObj = new Result();
-		resultObj.setResult(result);
-		if (result) {
-			resultObj.setScore(1);
-		} else {
-			resultObj.setScore(0);
-		}
+		boolean isValid = data != null && data.matches("^[a-zA-Z0-9]+$");
+		resultObj.setResult(isValid);
+		resultObj.setScore(isValid ? 1 : 0);
 		return resultObj;
 	}
 
